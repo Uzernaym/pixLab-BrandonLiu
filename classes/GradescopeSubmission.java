@@ -22,7 +22,7 @@ public class GradescopeSubmission {
 
         /* A5 */
         Picture pixA5 = new Picture("images/beach.jpg");
-//        pixA5.keepOnlyBlue();
+        pixA5.keepOnlyBlue();
 //        pixA5.negate();
 //        pixA5.grayscale();
 //        PictureTester.testKeepOnlyBlue();
