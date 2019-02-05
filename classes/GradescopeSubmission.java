@@ -9,12 +9,12 @@ public class GradescopeSubmission {
         IntArrayWorker worker = new IntArrayWorker();
         int[][] nums = {{1, 1, 1} ,{2,2,2}};
         worker.setMatrix(nums);
-//        worker.getCount(0);
-//        worker.getLargest();
-//        worker.getColTotal(0);
-//        IntArrayWorkerTester.testGetCount();
-//        IntArrayWorkerTester.testGetLargest();
-//        IntArrayWorkerTester.testGetColTotal();
+        worker.getCount(0);
+        worker.getLargest();
+        worker.getColTotal(0);
+        IntArrayWorkerTester.testGetCount();
+        IntArrayWorkerTester.testGetLargest();
+        IntArrayWorkerTester.testGetColTotal();
     }
 
     private static void partTwo() {

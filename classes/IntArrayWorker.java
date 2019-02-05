@@ -1,3 +1,4 @@
+//package com.gradescope.pixLab;
 public class IntArrayWorker
 {
   /** two dimensional matrix */
@@ -107,5 +108,23 @@ public class IntArrayWorker
       }
     }
     return count;
+  }
+
+  public int getLargest() {
+      int large = 0;
+      for(int row = 0; row < matrix.length; row++) {
+          for(int col = 0; col < matrix[0].length; col++) {
+              large = Math.max(large, matrix[row][col]);
+          }
+      }
+      return large;
+  }
+
+  public int getColTotal(int x) {
+      int total = 0;
+      for(int row = 0; row < matrix.length; row++) {
+          total += matrix[row][x];
+      }
+      return total;
   }
 }
