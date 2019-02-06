@@ -1,4 +1,3 @@
-//package com.gradescope.pixLab;
 public class IntArrayWorker
 {
   /** two dimensional matrix */

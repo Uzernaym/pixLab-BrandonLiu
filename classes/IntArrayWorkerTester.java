@@ -1,4 +1,3 @@
-//package com.gradescope.pixLab;
 public class IntArrayWorkerTester
 {
   /** method to test setMatrix */
