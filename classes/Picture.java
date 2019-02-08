@@ -251,9 +251,9 @@ public class Picture extends SimplePicture
       Pixel[][] pixels = this.getPixels2D();
       for(Pixel[] rowArray : pixels) {
           for(Pixel pixelObj : rowArray) {
-              pixelObj.setRed(255);
-              pixelObj.setGreen(255);
-              pixelObj.setBlue(255);
+              pixelObj.setRed(255-pixelObj.getRed());
+              pixelObj.setGreen(255-pixelObj.getRed());
+              pixelObj.setBlue(255-pixelObj.getRed());
           }
       }
   }
@@ -265,8 +265,6 @@ public class Picture extends SimplePicture
   {
     //Picture p = new SimplePicture();
     Picture beach = new Picture("images/beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
     beach.explore();
   }
   
