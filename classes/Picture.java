@@ -133,13 +133,13 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count++;
         leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
+        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+    System.out.print(count);
   }
   
   /** copy from the passed fromPic to the
@@ -292,23 +292,85 @@ public class Picture extends SimplePicture
       Pixel topPixel = null;
       Pixel bottomPixel = null;
 
-      for(int row = 0; row < pixels.length; row++) {
+      for(int row = 0; row < pixels.length/2; row++) {
           for (int col = 0; col < pixels[0].length; col++) {
               topPixel = pixels[row][col];
-              bottomPixel = pixels[row][pixels.length - col];
-              topPixel.setColor(bottomPixel.getColor());
+              bottomPixel = pixels[pixels.length - row - 1][col];
+              bottomPixel.setColor(topPixel.getColor());
           }
       }
   }
-  
-  /* Main method for testing - each class in Java can have a main 
+
+    public void mirrorHorizontalBotToTop() {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+
+        for(int row = 0; row < pixels.length/2; row++) {
+            for (int col = 0; col < pixels[0].length; col++) {
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[pixels.length - row - 1][col];
+                topPixel.setColor(bottomPixel.getColor());
+            }
+        }
+    }
+
+    public void mirrorDiagonal() {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+
+        for(int row = 0; row < pixels.length; row++) {
+            for (int col = row; col < pixels.length; col++) {
+                leftPixel = pixels[row][col];
+                rightPixel = pixels[col][row];
+                leftPixel.setColor(rightPixel.getColor());
+            }
+        }
+    }
+
+    public void mirrorArms() {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel leftPixel = null;
+      Pixel rightPixel = null;
+
+      for(int row = 155; row < 194; row++) {
+          for(int col = 100; col < 170; col++) {
+              leftPixel = pixels[row][col];
+              rightPixel = pixels[155 - row + 230][col];
+              rightPixel.setColor(leftPixel.getColor());
+          }
+      }
+      for(int row = 170; row < 200; row++) {
+          for(int col = 240; col < 299; col++) {
+              leftPixel = pixels[row][col];
+              rightPixel = pixels[170 - row + 220][col];
+              rightPixel.setColor(leftPixel.getColor());
+          }
+      }
+    }
+
+    public void mirrorGull() {
+      Pixel[][] pixels = new this.getPixels2D();
+      Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      for(int row = 0; row < 0; row++) {
+          for(int col = 0; col < 0; col++) {
+              leftPixel = pixels[row][col];
+              rightPixel = pixels[row + 30][col + 30]
+          }
+      }
+    }
+
+
+  /* Main method for testing - each class in Java can have a main
    * method 
    */
   public static void main(String[] args) 
   {
     //Picture p = new SimplePicture();
-    Picture beach = new Picture("images/beach.jpg");
-    beach.explore();
+    //Picture beach = new Picture("images/beach.jpg");
+    //beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
