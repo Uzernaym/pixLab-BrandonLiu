@@ -351,13 +351,13 @@ public class Picture extends SimplePicture
     }
 
     public void mirrorGull() {
-      Pixel[][] pixels = new this.getPixels2D();
+      Pixel[][] pixels = this.getPixels2D();
       Pixel leftPixel = null;
       Pixel rightPixel = null;
       for(int row = 0; row < 0; row++) {
           for(int col = 0; col < 0; col++) {
               leftPixel = pixels[row][col];
-              rightPixel = pixels[row + 30][col + 30]
+              rightPixel = pixels[row + 30][col + 30];
           }
       }
     }
