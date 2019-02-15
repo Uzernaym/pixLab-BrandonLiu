@@ -273,6 +273,21 @@ public class Picture extends SimplePicture
       }
   }
 
+  public void fixUnderwater() {
+      Pixel[][] pixels = this.getPixels2D();
+      for(Pixel[] rowArray : pixels) {
+          for(Pixel pixelObj : rowArray) {
+              if(pixelObj.getRed() < 25) {
+                  pixelObj.setBlue(pixelObj.getBlue() + 20);
+              }
+              pixelObj.setGreen(pixelObj.getGreen() - 10);
+              //if(pixelObj.getBlue() > 180) {
+                  pixelObj.setBlue(pixelObj.getBlue());
+              //}
+          }
+      }
+  }
+
   public void mirrorVerticalRightToLeft() {
       Pixel[][] pixels = this.getPixels2D();
       Pixel leftPixel = null;
