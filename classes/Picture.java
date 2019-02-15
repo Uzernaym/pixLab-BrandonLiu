@@ -1,3 +1,5 @@
+package com.gradescope.pixlab;
+
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -6,8 +8,6 @@ import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 
-package com.gradescope.pixlab;
-
 /**
  * A class that represents a picture.  This class inherits from 
  * SimplePicture and allows the student to add functionality to
@@ -15,7 +15,7 @@ package com.gradescope.pixlab;
  * 
  * @author Barbara Ericson ericson@cc.gatech.edu
  */
-public class Picture extends SimplePicture 
+public class Picture extends SimplePicture
 {
   ///////////////////// constructors //////////////////////////////////
   
@@ -386,9 +386,6 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    //Picture p = new SimplePicture();
-    //Picture beach = new Picture("images/beach.jpg");
-    //beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
