@@ -173,14 +173,13 @@ public class Picture extends SimplePicture
     }   
   }
 
-    public void copyTwo(Picture fromPic, int startRow, int startCol) {
+    public void copyTwo(Picture fromPic, int startRow, int startCol, int fromStartRow, int fromStartCol, int endRow, int endCol) {
         Pixel fromPixel = null;
         Pixel toPixel = null;
         Pixel[][] toPixels = this.getPixels2D();
         Pixel[][] fromPixels = fromPic.getPixels2D();
-        for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length && toRow < toPixels.length; fromRow++, toRow++) {
-            for (int fromCol = 0, toCol = startCol;
-                 fromCol < fromPixels[0].length && toCol < toPixels[0].length; fromCol++, toCol++) {
+        for (int fromRow = fromStartRow, toRow = startRow; fromRow < endRow && toRow < toPixels.length; fromRow++, toRow++) {
+            for (int fromCol = fromStartCol, toCol = startCol; fromCol < endCol && toCol < toPixels[0].length; fromCol++, toCol++) {
                 fromPixel = fromPixels[fromRow][fromCol];
                 toPixel = toPixels[toRow][toCol];
                 toPixel.setColor(fromPixel.getColor());
@@ -204,6 +203,26 @@ public class Picture extends SimplePicture
     this.mirrorVertical();
     this.write("images/collage.jpg");
   }
+
+    public void createMyCollage()
+    {
+        Picture flower1 = new Picture("images/flower1.jpg");
+        Picture flower2 = new Picture("images/flower2.jpg");
+        this.copy(flower1,0,0);
+        this.copy(flower2,100,0);
+        this.copy(flower1,200,0);
+        Picture flowerRed = new Picture(flower2);
+        flowerRed.keepOnlyRed();
+        Picture grayFlower = new Picture(flower1);
+        grayFlower.grayscale();
+        Picture negateFlower = new Picture(flower2);
+        negateFlower.negate();
+        this.copy(flowerRed,300,0);
+        this.copy(grayFlower,400,0);
+        this.copy(negateFlower,500,0);
+        this.mirrorVertical();
+        this.write("images/collage.jpg");
+    }
   
   
   /** Method to show large changes in color 
@@ -231,6 +250,29 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  public void edgeDetection2(int edgeDist)
+    {
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        Pixel[][] pixels = this.getPixels2D();
+        Color rightColor = null;
+        for (int row = 0; row < pixels.length; row++)
+        {
+            for (int col = 0;
+                 col < pixels[0].length-1; col++)
+            {
+                leftPixel = pixels[row][col];
+                rightPixel = pixels[row][col+1];
+                rightColor = rightPixel.getColor();
+                if (leftPixel.colorDistance(rightColor) >
+                        edgeDist)
+                    leftPixel.setColor(Color.BLACK);
+                else
+                    leftPixel.setColor(Color.WHITE);
+            }
+        }
+    }
 
   public void keepOnlyBlue() {
       Pixel[][] pixels = this.getPixels2D();

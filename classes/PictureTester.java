@@ -115,13 +115,29 @@ public class PictureTester
     canvas.explore();
   }
 
+    public static void testMyCollage()
+    {
+        Picture canvas = new Picture("images/CumberlandIsland.jpg");
+        canvas.createMyCollage();
+        canvas.explore();
+    }
+
     public static void testCopy()
     {
         Picture canvas = new Picture("images/640x480.jpg");
-        Picture flower = new Picture("images/flower.jpg");
+        Picture flower = new Picture("images/flower1.jpg");
+        canvas.copy(flower, 10, 10);
         canvas.explore();
     }
-  
+
+    public static void testCopyTwo()
+    {
+        Picture canvas = new Picture("images/640x480.jpg");
+        Picture flower = new Picture("images/flower1.jpg");
+        canvas.copyTwo(flower, 10, 10, 50, 50, 100, 100);
+        canvas.explore();
+    }
+
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -129,6 +145,13 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+
+    public static void testEdgeDetection2(int x)
+    {
+        Picture swan = new Picture("images/swan.jpg");
+        swan.edgeDetection(x);
+        swan.explore();
+    }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -152,10 +175,13 @@ public class PictureTester
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
-    testCollage();
+    //testCollage();
     //testCopy();
+      //testCopyTwo();
+      //testCopy();
+      //testMyCollage();
     //testEdgeDetection();
-    //testEdgeDetection2();
+    testEdgeDetection2(1);
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
