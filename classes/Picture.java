@@ -6,8 +6,6 @@ import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 
-package com.gradescop.pixlab;
-
 /**
  * A class that represents a picture.  This class inherits from 
  * SimplePicture and allows the student to add functionality to
@@ -15,7 +13,7 @@ package com.gradescop.pixlab;
  * 
  * @author Barbara Ericson ericson@cc.gatech.edu
  */
-public class Picture extends SimplePicture 
+public class Picture extends SimplePicture
 {
   ///////////////////// constructors //////////////////////////////////
   
@@ -175,11 +173,26 @@ public class Picture extends SimplePicture
     }   
   }
 
-  /** Method to create a collage of several pictures */
+    public void copyTwo(Picture fromPic, int startRow, int startCol) {
+        Pixel fromPixel = null;
+        Pixel toPixel = null;
+        Pixel[][] toPixels = this.getPixels2D();
+        Pixel[][] fromPixels = fromPic.getPixels2D();
+        for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length && toRow < toPixels.length; fromRow++, toRow++) {
+            for (int fromCol = 0, toCol = startCol;
+                 fromCol < fromPixels[0].length && toCol < toPixels[0].length; fromCol++, toCol++) {
+                fromPixel = fromPixels[fromRow][fromCol];
+                toPixel = toPixels[toRow][toCol];
+                toPixel.setColor(fromPixel.getColor());
+            }
+        }
+    }
+
+        /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
+    Picture flower1 = new Picture("images/flower1.jpg");
+    Picture flower2 = new Picture("images/flower2.jpg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
@@ -189,7 +202,7 @@ public class Picture extends SimplePicture
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
-    this.write("collage.jpg");
+    this.write("images/collage.jpg");
   }
   
   
@@ -254,8 +267,8 @@ public class Picture extends SimplePicture
       for(Pixel[] rowArray : pixels) {
           for(Pixel pixelObj : rowArray) {
               pixelObj.setRed(255-pixelObj.getRed());
-              pixelObj.setGreen(255-pixelObj.getRed());
-              pixelObj.setBlue(255-pixelObj.getRed());
+              pixelObj.setGreen(255-pixelObj.getGreen());
+              pixelObj.setBlue(255-pixelObj.getBlue());
           }
       }
   }
@@ -269,6 +282,21 @@ public class Picture extends SimplePicture
               pixelObj.setRed(gray);
               pixelObj.setGreen(gray);
               pixelObj.setBlue(gray);
+          }
+      }
+  }
+
+  public void fixUnderwater() {
+      Pixel[][] pixels = this.getPixels2D();
+      for(Pixel[] rowArray : pixels) {
+          for(Pixel pixelObj : rowArray) {
+              if(pixelObj.getRed() < 25) {
+                  pixelObj.setBlue(pixelObj.getBlue() + 20);
+              }
+              pixelObj.setGreen(pixelObj.getGreen() - 10);
+              //if(pixelObj.getBlue() > 180) {
+                  pixelObj.setBlue(pixelObj.getBlue());
+              //}
           }
       }
   }
@@ -371,9 +399,6 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    //Picture p = new SimplePicture();
-    //Picture beach = new Picture("images/beach.jpg");
-    //beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
