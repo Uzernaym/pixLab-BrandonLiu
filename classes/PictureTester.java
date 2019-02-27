@@ -179,9 +179,9 @@ public class PictureTester
     //testCopy();
       //testCopyTwo();
       //testCopy();
-      //testMyCollage();
+      testMyCollage();
     //testEdgeDetection();
-    testEdgeDetection2(1);
+    //testEdgeDetection2(1);
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
