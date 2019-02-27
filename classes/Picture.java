@@ -206,7 +206,7 @@ public class Picture extends SimplePicture
 
     public void createMyCollage()
     {
-        Picture flower1 = new Picture("images/flower1.jpg");
+        Picture flower1 = new Picture("images/butterfly1.jpg");
         Picture flower2 = new Picture("images/caterpillar.jpg");
         this.copy(flower1,0,0);
         this.copy(flower2,100,0);
